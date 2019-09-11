@@ -77,7 +77,7 @@ menuButton.addEventListener('click', e => {
 return main;
 };
 
-const menu = document.querySelector('.header h1');
+const menu = document.querySelector('h1');
 const head = document.querySelector('.header');
 
 head.insertBefore(createMenu(menuItems), menu);
