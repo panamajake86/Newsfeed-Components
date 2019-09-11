@@ -112,3 +112,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//create elements
+function createArticle(cardData) {
+  const card = document.createElement('div');
+    const cardTitle = document.createElement('h2');
+    const cardDate = document.createElement('p');
+    const firstPar = document.createElement('p');
+    const secondPar = document.createElement('p');
+    const thirdPar = document.createElement('p');
+    const button = document.createElement('span');
+
+//create structure
+card.appendChild(cardTitle);
+card.appendChild(cardDate);
+card.appendChild(firstPar);
+card.appendChild(secondPar);
+card.appendChild(thirdPar);
+card.appendChild(button);
+
+//set content
+cardTitle.textContent = cardData.title;
+cardDate.textContent = cardData.date;
+firstPar.textContent = cardData.firstParagraph;
+secondPar.textContent = cardData.secondParagraph;
+thirdPar.textContent = cardData.thirdParagraph;
+button.textContent = '\u25bc';
+
+//apply styles
+card.classList.add('article');
+cardTitle.classList.add('h2');
+cardDate.classList.add('date');
+button.classList.add('expandButton');
+
+//create event handlers
+button.addEventListener('click', (e) => {
+  card.classList.toggle('article-open');
+})
+
+return card;
+};
+
+const articles = document.querySelector('.articles');
+
+data.forEach(event => {
+  articles.appendChild(createArticle(event))
+});
