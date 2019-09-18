@@ -33,3 +33,51 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+function createMenu(schtuff) {
+  const menuButton = document.querySelector('.menu-button');
+  const main = document.createElement('div');
+  const unord = document.createElement('ul');
+  const item0 = document.createElement('li');
+  const item1 = document.createElement('li');
+  const item2 = document.createElement('li');
+  const item3 = document.createElement('li');
+  const item4 = document.createElement('li');
+  const item5 = document.createElement('li');  
+
+main.appendChild(unord);
+unord.appendChild(item0);
+unord.appendChild(item1);
+unord.appendChild(item2);
+unord.appendChild(item3);
+unord.appendChild(item4);
+unord.appendChild(item5);
+
+item0.textContent = schtuff[0];
+item1.textContent = schtuff[1];
+item2.textContent = schtuff[2];
+item3.textContent = schtuff[3];
+item4.textContent = schtuff[4];
+item5.textContent = schtuff[5];
+
+main.classList.add('menu');
+unord.classList.add('ul');
+item0.classList.add('li');
+item1.classList.add('li');
+item2.classList.add('li');
+item3.classList.add('li');
+item4.classList.add('li');
+item5.classList.add('li');
+
+menuButton.addEventListener('click', e => {
+  main.classList.toggle('menu--open');
+  e.stopPropagation();
+}, false)
+
+return main;
+};
+
+const menu = document.querySelector('h1');
+const head = document.querySelector('.header');
+
+head.insertBefore(createMenu(menuItems), menu);

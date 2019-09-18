@@ -85,6 +85,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: `Jake is Tired and Needs to go to Bed`,
+    date: `Today's Date`,
+    firstParagraph: `I am so tired!`,
+    secondParagraph: `This assignment is kicking my ass!`,
+    thirdParagraph: `But I'm feeling better now that it is working.`
   }
 ];
 
@@ -112,3 +120,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//create elements
+function createArticle(cardData) {
+  const card = document.createElement('div');
+    const cardTitle = document.createElement('h2');
+    const cardDate = document.createElement('p');
+    const firstPar = document.createElement('p');
+    const secondPar = document.createElement('p');
+    const thirdPar = document.createElement('p');
+    const button = document.createElement('span');
+
+//create structure
+card.appendChild(cardTitle);
+card.appendChild(cardDate);
+card.appendChild(firstPar);
+card.appendChild(secondPar);
+card.appendChild(thirdPar);
+card.appendChild(button);
+
+//set content
+cardTitle.textContent = cardData.title;
+cardDate.textContent = cardData.date;
+firstPar.textContent = cardData.firstParagraph;
+secondPar.textContent = cardData.secondParagraph;
+thirdPar.textContent = cardData.thirdParagraph;
+button.textContent = '\u25bc';
+
+//apply styles
+card.classList.add('article');
+cardTitle.classList.add('h2');
+cardDate.classList.add('date');
+button.classList.add('expandButton');
+
+//create event handlers
+button.addEventListener('click', (e) => {
+  card.classList.toggle('article-open');
+})
+
+return card;
+};
+
+const articles = document.querySelector('.articles');
+
+data.forEach(event => {
+  articles.appendChild(createArticle(event))
+});
